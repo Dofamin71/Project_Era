@@ -6,7 +6,7 @@
         <item name="android:statusBarColor">@color/colorBar</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorBackgroundFloating">@color/colorBackgroundFloating</item>
         <item name="colorButtonNormal">@color/colorButtonNormal</item>
@@ -16,10 +16,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>
-        <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:navigationBarColor">@color/colorBar</item>
-        <item name="android:statusBarColor">@color/colorBar</item>
     </style>
 
 </resources>
