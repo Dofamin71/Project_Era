@@ -14,8 +14,7 @@
     <string name="menu_tools">Настройки</string>
     <string name="menu_share">Аккаунт</string>
     <string name="menu_send">Отправить</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="update">Обновить базы</string>
+    <string name="update">Обновить списки</string>
     <string name="pay">Поддержать проект</string>
     <string name="notification">Уведомления</string>
     <string name="help">Помощь</string>
