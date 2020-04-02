@@ -11,7 +11,7 @@
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/news"
+            android:id="@+id/nav_news"
             android:icon="@drawable/ic_news"
             android:title="@string/news" />
         <item
@@ -19,7 +19,7 @@
             android:icon="@drawable/ic_sharaga"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/calendar"
+            android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_calendar"
             android:title="@string/calendar" />
     </group>
@@ -27,17 +27,17 @@
     <item android:title="Настройки">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_account"
                 android:icon="@drawable/ic_person"
                 android:title="@string/menu_share" />
             <item
-                android:id="@+id/notification"
+                android:id="@+id/nav_notification"
                 android:icon="@drawable/ic_notifications"
                 android:title="@string/notification"
                 app:actionLayout="@layout/switch_item"
                 app:showAsAction="always" />
             <item
-                android:id="@+id/update"
+                android:id="@+id/nav_update"
                 android:icon="@drawable/ic_backup"
                 android:title="@string/update" />
         </menu>
@@ -46,11 +46,11 @@
     <item android:title="Другое">
         <menu>
             <item
-                android:id="@+id/help"
+                android:id="@+id/nav_help"
                 android:icon="@drawable/ic_help"
                 android:title="@string/help" />
             <item
-                android:id="@+id/pay"
+                android:id="@+id/nav_pay"
                 android:icon="@drawable/ic_pay"
                 android:title="@string/pay" />
         </menu>

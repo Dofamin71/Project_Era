@@ -53,6 +53,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
+                <action android:name="android.intent.action.DEFINE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
