@@ -5,12 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 
 public class CalcActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,13 +21,8 @@ public class CalcActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openHome(view);
+                finish();
             }
         });
-    }
-
-    public void openHome(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }
