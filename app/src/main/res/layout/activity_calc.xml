@@ -8,6 +8,16 @@
     android:theme="@style/AppTheme"
     tools:context=".CalcActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="1dp"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

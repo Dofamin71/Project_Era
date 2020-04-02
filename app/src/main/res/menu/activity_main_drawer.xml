@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
+            android:id="@+id/news"
+            android:icon="@drawable/ic_news"
+            android:title="@string/news" />
+        <item
             android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_sharaga"
             android:title="@string/menu_gallery" />
         <item
-            android:id="@+id/nav_tools"
-            android:title="@string/menu_tools" />
+            android:id="@+id/calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="@string/calendar" />
     </group>
 
-    <item android:title="Разное">
+    <item android:title="Настройки">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_person"
                 android:title="@string/menu_share" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
+                android:id="@+id/notification"
+                android:icon="@drawable/ic_notifications"
+                android:title="@string/notification"
+                app:actionLayout="@layout/switch_item"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/update"
+                android:icon="@drawable/ic_backup"
+                android:title="@string/update" />
+        </menu>
+    </item>
+
+    <item android:title="Другое">
+        <menu>
+            <item
+                android:id="@+id/help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/help" />
+            <item
+                android:id="@+id/pay"
+                android:icon="@drawable/ic_pay"
+                android:title="@string/pay" />
         </menu>
     </item>
 </menu>

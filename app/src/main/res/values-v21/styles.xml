@@ -15,7 +15,7 @@
         <item name="colorControlNormal">@color/colorControlNormal</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>
-        <item name="android:navigationBarColor">@color/colorBar</item>
+        <item name="android:navigationBarColor">@color/colorBar</item>Z
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
