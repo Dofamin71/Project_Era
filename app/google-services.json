@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "21053289684",
+    "firebase_url": "https://project555-2a735.firebaseio.com",
+    "project_id": "project555-2a735",
+    "storage_bucket": "project555-2a735.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21053289684:android:902117e873ca472ae1b741",
+        "android_client_info": {
+          "package_name": "com.doda.project555"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21053289684-07l716g7ph0of4rhe6td4v7kkafr6p7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEYziMn07s0FnsrKyvbL7LN0eFZQl2Fbo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21053289684-07l716g7ph0of4rhe6td4v7kkafr6p7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
