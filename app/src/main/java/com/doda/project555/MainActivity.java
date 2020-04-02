@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),
+                        "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
                 openCalc(view);
             }
         });
