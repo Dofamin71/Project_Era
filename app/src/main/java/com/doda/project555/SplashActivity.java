@@ -23,45 +23,4 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 1000);
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.e("Destroy", "onDestroy");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.e("Restart", "onRestart");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.e("Pause", "onPause");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("Resume", "onResume");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.e("Start", "onStart");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.e("Stop", "onStop");
-    }
 }
