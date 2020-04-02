@@ -1,15 +1,32 @@
 <resources>
+
     <string name="app_name">Project555</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Dofamin Daretenович</string>
+    <string name="nav_header_subtitle">DoDaGames@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_home">Главная</string>
+    <string name="menu_gallery">Университеты</string>
+    <string name="menu_login">Авторизация</string>
+    <string name="menu_tools">Настройки</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="menu_send">Отправить</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="ad_banner_main">ca-app-pub-8993821042118113/4261197848</string>
+    <string name="ad_banner_test">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="Home_fragment">This is home fragment</string>
+    <string name="Gallery_fragment">This is gallery fragment</string>
+    <string name="Send_fragment">This is send fragment</string>
+    <string name="Share_fragment">This is share fragment</string>
+    <string name="Tools_fragment">This is tools fragment</string>
+    <string name="DoDa">Dareten and Dofamin</string>
+    <string name="disclaimer">Данное приложение является по большей мере развлекательным.
+    Авторы не несут ответственность за оскорбление чувств верующих и унижение сексуальных меньшинств.</string>
 
     <string name="gallery">This is gallery fragment</string>
     <string name="home">This is home fragment</string>
