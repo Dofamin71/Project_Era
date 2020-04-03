@@ -25,7 +25,7 @@ public class AccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.account, container, false);
+        View root = inflater.inflate(R.layout.fragment_account, container, false);
         final FloatingActionButton button1 = root.findViewById(R.id.sign_out_button);
         final FloatingActionButton button2 = root.findViewById(R.id.delete_button);
         final FloatingActionButton button3 = root.findViewById(R.id.login_button);
@@ -82,7 +82,6 @@ public class AccountFragment extends Fragment {
         if(FirebaseAuth.getInstance().getCurrentUser() == null) {
             List<AuthUI.IdpConfig> providers = Arrays.asList(
                     new AuthUI.IdpConfig.EmailBuilder().build(),
-                    new AuthUI.IdpConfig.GoogleBuilder().build(),
                     new AuthUI.IdpConfig.AnonymousBuilder().build());
 
             startActivityForResult(

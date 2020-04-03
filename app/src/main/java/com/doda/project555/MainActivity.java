@@ -1,7 +1,6 @@
 package com.doda.project555;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,
                         "Successfully signed in. Welcome " + FirebaseAuth.getInstance()
                                 .getCurrentUser()
-                                .getDisplayName() + "!",
+                                .getDisplayName(),
                         Toast.LENGTH_LONG)
                         .show();
             } else {
@@ -103,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         }
-
     }
 
     @Override

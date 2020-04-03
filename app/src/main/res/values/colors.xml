@@ -3,7 +3,7 @@
     <color name="colorAccent">#4499ff</color>
     <color name="colorBackgroundFloating">#000000</color>
     <color name="colorButtonNormal">#000000</color>
-    <color name="colorControlActivated">#cccccc</color>
+    <color name="colorControlActivated">#4499ff</color>
     <color name="colorControlHighlight">#000000</color>
     <color name="colorControlNormal">#000000</color>
     <color name="colorPrimary">#4499ff</color>

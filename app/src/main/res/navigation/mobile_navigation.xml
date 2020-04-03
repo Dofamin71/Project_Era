@@ -21,4 +21,8 @@
         android:id="@+id/nav_account"
         android:name="com.doda.project555.ui.AccountFragment"
         android:label="AccountFragment" />
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="com.doda.project555.ui.CalendarFragment"
+        android:label="CalendarFragment" />
 </navigation>

@@ -18,27 +18,19 @@ public class SplashActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
 
+    private boolean flag = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
         startLogin();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 1000);
     }
 
     void startLogin() {
         if(FirebaseAuth.getInstance().getCurrentUser() == null) {
             List<AuthUI.IdpConfig> providers = Arrays.asList(
                     new AuthUI.IdpConfig.EmailBuilder().build(),
-                    new AuthUI.IdpConfig.GoogleBuilder().build(),
                     new AuthUI.IdpConfig.AnonymousBuilder().build());
 
             startActivityForResult(
@@ -51,9 +43,18 @@ public class SplashActivity extends AppCompatActivity {
             Toast.makeText(this,
                     "Welcome " + FirebaseAuth.getInstance()
                             .getCurrentUser()
-                            .getDisplayName() + "!",
+                            .getDisplayName(),
                     Toast.LENGTH_LONG)
                     .show();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 1000);
         }
     }
 
@@ -84,6 +85,10 @@ public class SplashActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.e("Resume", "onResume");
+        if (flag) {
+            startLogin();
+            flag = false;
+        }
     }
 
     @Override
@@ -96,5 +101,6 @@ public class SplashActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.e("Stop", "onStop");
+        flag = true;
     }
 }
