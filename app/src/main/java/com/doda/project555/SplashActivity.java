@@ -59,11 +59,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.e("Destroy", "onDestroy");
