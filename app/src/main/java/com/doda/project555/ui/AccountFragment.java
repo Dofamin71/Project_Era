@@ -1,7 +1,6 @@
 package com.doda.project555.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,18 +91,8 @@ public class AccountFragment extends Fragment {
                             .build(),
                     RC_SIGN_IN);
         } else {
-            Toast.makeText(getContext(), "СЛЫШЬ, МЫШЬ. ТЫ УЖЕ ЗАШЕЛ!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "СЛЫШЬ, МЫШЬ, ТЫ УЖЕ ЗАШЕЛ!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void synchronization() {
-
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.e("Pause", "onPause");
-
-    }
 }
