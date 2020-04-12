@@ -40,10 +40,12 @@ public class SplashActivity extends AppCompatActivity {
                             .build(),
                     RC_SIGN_IN);
         } else {
+            String name = FirebaseAuth.getInstance()
+                    .getCurrentUser()
+                    .getDisplayName();
+            if(name == null)name = "";
             Toast.makeText(this,
-                    "Welcome " + FirebaseAuth.getInstance()
-                            .getCurrentUser()
-                            .getDisplayName(),
+                    "Welcome " + name,
                     Toast.LENGTH_LONG)
                     .show();
 
