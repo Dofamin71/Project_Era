@@ -9,17 +9,13 @@
     <string name="action_settings">Настройки аккаунта</string>
 
     <string name="menu_home">Главная</string>
-    <string name="menu_gallery">Университеты</string>
-    <string name="menu_login">Авторизация</string>
-    <string name="menu_tools">Настройки</string>
-    <string name="menu_share">Аккаунт</string>
-    <string name="menu_send">Отправить</string>
-    <string name="update">Обновить списки</string>
-    <string name="pay">Поддержать проект</string>
-    <string name="notification">Уведомления</string>
-    <string name="help">Помощь</string>
-    <string name="calendar">Календарь событий</string>
-    <string name="news">Новости</string>
+    <string name="menu_university">Университеты</string>
+    <string name="menu_calendar">Календарь событий</string>
+    <string name="menu_account">Аккаунт</string>
+    <string name="menu_notifications">Уведомления</string>
+    <string name="menu_update">Обновить списки</string>
+    <string name="menu_pay">Поддержать проект</string>
+    <string name="menu_help">Помощь</string>
 
     <string name="ad_banner_main">ca-app-pub-6675273839004883/8319047689</string>
     <string name="ad_banner_test">ca-app-pub-3940256099942544/6300978111</string>

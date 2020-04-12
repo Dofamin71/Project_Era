@@ -2,7 +2,7 @@
 <resources>
     <color name="colorAccent">#4499ff</color>
     <color name="colorBackgroundFloating">#000000</color>
-    <color name="colorButtonNormal">#000000</color>
+    <color name="colorButtonNormal">#ffffff</color>
     <color name="colorControlActivated">#4499ff</color>
     <color name="colorControlHighlight">#000000</color>
     <color name="colorControlNormal">#000000</color>

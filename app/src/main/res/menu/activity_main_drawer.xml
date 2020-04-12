@@ -11,17 +11,13 @@
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_news"
-            android:icon="@drawable/ic_news"
-            android:title="@string/news" />
-        <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_university"
             android:icon="@drawable/ic_sharaga"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_university" />
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_calendar"
-            android:title="@string/calendar" />
+            android:title="@string/menu_calendar" />
     </group>
 
     <item android:title="Настройки">
@@ -29,17 +25,17 @@
             <item
                 android:id="@+id/nav_account"
                 android:icon="@drawable/ic_person"
-                android:title="@string/menu_share" />
+                android:title="@string/menu_account" />
             <item
-                android:id="@+id/nav_notification"
+                android:id="@+id/nav_notifications"
                 android:icon="@drawable/ic_notifications"
-                android:title="@string/notification"
+                android:title="@string/menu_notifications"
                 app:actionLayout="@layout/switch_item"
                 app:showAsAction="always" />
             <item
                 android:id="@+id/nav_update"
                 android:icon="@drawable/ic_backup"
-                android:title="@string/update" />
+                android:title="@string/menu_update" />
         </menu>
     </item>
 
@@ -48,11 +44,11 @@
             <item
                 android:id="@+id/nav_help"
                 android:icon="@drawable/ic_help"
-                android:title="@string/help" />
+                android:title="@string/menu_help" />
             <item
                 android:id="@+id/nav_pay"
                 android:icon="@drawable/ic_pay"
-                android:title="@string/pay" />
+                android:title="@string/menu_pay" />
         </menu>
     </item>
 </menu>

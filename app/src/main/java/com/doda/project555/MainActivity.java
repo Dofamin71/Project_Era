@@ -1,6 +1,8 @@
 package com.doda.project555;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,12 +28,19 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
 
+    public static final String APP_PREFERENCES = "mysettings";
+    public static final String APP_SWITCH_NOTIFICATIONS = "switch_not";
+    private SharedPreferences mSettings;
+    public boolean mSwitch;
+
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-6675273839004883~5892550117");
 

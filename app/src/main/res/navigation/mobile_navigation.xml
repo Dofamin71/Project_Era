@@ -12,17 +12,29 @@
         tools:layout="@layout/fragment_home"/>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_university"
         android:name="com.doda.project555.ui.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_university"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_account"
         android:name="com.doda.project555.ui.AccountFragment"
-        android:label="AccountFragment" />
+        android:label="@string/menu_account" />
     <fragment
         android:id="@+id/nav_calendar"
         android:name="com.doda.project555.ui.CalendarFragment"
-        android:label="CalendarFragment" />
+        android:label="@string/menu_calendar" />
+    <fragment
+        android:id="@+id/nav_notifications"
+        android:name="com.doda.project555.ui.NotificationsFragment"
+        android:label="@string/menu_notifications" />
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.doda.project555.ui.HelpFragment"
+        android:label="@string/menu_help" />
+    <fragment
+        android:id="@+id/nav_pay"
+        android:name="com.doda.project555.ui.PayFragment"
+        android:label="@string/menu_pay" />
 </navigation>
