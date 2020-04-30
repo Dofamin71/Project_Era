@@ -1,5 +1,6 @@
 package com.doda.project555;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,15 +31,19 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
+    public static final String APP_PREFERENCES = "mySettings";
+    public static final String APP_SWITCH_NOTIFICATIONS = "switch_not";
+    public boolean mSwitch;
     private AppBarConfiguration mAppBarConfiguration;
     Boolean swi;
-    SharedPreferences sPref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sPref = getPreferences(MODE_PRIVATE);
+        final SharedPreferences mySettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+
 
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-6675273839004883~5892550117");
 
@@ -54,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),
                         "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
-                openCalc(view);
+                openCalc();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -67,20 +72,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        swi = mySettings.getBoolean("SWITCH", true);
 
-        if (sPref.contains("SWITCH")) {
-            swi = sPref.getBoolean("SWITCH", true);
-        } else {
-            swi = true;
-        }
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications);
-        Switch drawerSwitch = menuItem.getActionView().findViewById(R.id.notifications);
+        final Switch drawerSwitch = menuItem.getActionView().findViewById(R.id.notifications);
         drawerSwitch.setChecked(swi);
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 swi = isChecked;
-                SharedPreferences.Editor ed = sPref.edit();
+                drawerSwitch.setChecked(swi);
+                SharedPreferences.Editor ed = mySettings.edit();
                 ed.putBoolean("SWITCH", swi);
                 ed.apply();
             }
@@ -100,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
-    public void openCalc(View view){
+    public void openCalc(){
         Intent intent = new Intent(this, CalcActivity.class);
         startActivity(intent);
     }
@@ -111,10 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode == RC_SIGN_IN) {
             if(resultCode == RESULT_OK) {
+                String name = FirebaseAuth.getInstance()
+                        .getCurrentUser()
+                        .getDisplayName();
+                if(name == null)name = "";
                 Toast.makeText(this,
-                        "Successfully signed in. Welcome " + FirebaseAuth.getInstance()
-                                .getCurrentUser()
-                                .getDisplayName(),
+                        "Successfully signed in. Welcome " + name,
                         Toast.LENGTH_LONG)
                         .show();
             } else {
@@ -122,12 +126,10 @@ public class MainActivity extends AppCompatActivity {
                         "We couldn't sign you in. Please try again later.",
                         Toast.LENGTH_LONG)
                         .show();
-                // Close the app
                 finish();
             }
         }
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
