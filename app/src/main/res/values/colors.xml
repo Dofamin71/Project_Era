@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#4499ff</color>
-    <color name="colorBackgroundFloating">#000000</color>
     <color name="colorButtonNormal">#ffffff</color>
-    <color name="colorControlActivated">#4499ff</color>
-    <color name="colorControlHighlight">#000000</color>
-    <color name="colorControlNormal">#000000</color>
-    <color name="colorPrimary">#4499ff</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorSwitchThumbNormal">#000000</color>
-    <color name="colorBar">#000000</color>
     <color name="colorWindowBackground">#4499ff</color>
+    <color name="colorControlActivated">#4499ff</color>
+    <color name="colorControlHighlight">#33888888</color>
+    <color name="colorAccent">#4499ff</color>
+    <color name="colorPrimary">#4499ff</color>
     <color name="colorText">#37474f</color>
+    <color name="colorBackgroundFloating">#000000</color>
+    <color name="colorSwitchThumbNormal">#000000</color>
+    <color name="colorControlNormal">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorBar">#000000</color>
 </resources>

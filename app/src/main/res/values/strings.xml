@@ -7,6 +7,7 @@
     <string name="nav_header_subtitle">DoDaGames@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Настройки аккаунта</string>
+    <string name="calc">Калькулятор</string>
 
     <string name="menu_home">Главная</string>
     <string name="menu_university">Университеты</string>

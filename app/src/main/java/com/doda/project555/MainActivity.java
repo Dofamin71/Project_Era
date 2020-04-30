@@ -1,7 +1,9 @@
 package com.doda.project555;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,8 +30,8 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
-
     private AppBarConfiguration mAppBarConfiguration;
+    Boolean swi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,21 +65,27 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        if (PreferenceManager.getDefaultSharedPreferences(this).contains("SWITCH")) {
+            swi = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("SWITCH", swi);
+        } else {
+            swi = true;
+        }
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications); // This is the menu item that contains your switch
         Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.notifications);
+        drawerSwitch.setChecked(swi);
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    swi = true;
                     Toast.makeText(getApplicationContext(), "Switch turned on", Toast.LENGTH_SHORT).show();
                 } else {
+                    swi = false;
                     Toast.makeText(getApplicationContext(), "Switch turned off", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -89,8 +97,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
     public void openCalc(View view){
@@ -115,17 +122,18 @@ public class MainActivity extends AppCompatActivity {
                         "We couldn't sign you in. Please try again later.",
                         Toast.LENGTH_LONG)
                         .show();
-
                 // Close the app
                 finish();
             }
         }
     }
 
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.e("Destroy", "onDestroy");
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("SWITCH", swi);
     }
 
     @Override

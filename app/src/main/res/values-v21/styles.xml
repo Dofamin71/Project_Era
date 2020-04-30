@@ -1,5 +1,4 @@
 <resources>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -15,7 +14,7 @@
         <item name="colorControlNormal">@color/colorControlNormal</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>
-        <item name="android:navigationBarColor">@color/colorBar</item>Z
+        <item name="android:navigationBarColor">@color/colorBar</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
@@ -26,5 +25,4 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:clipToPadding">false</item>
     </style>
-
 </resources>

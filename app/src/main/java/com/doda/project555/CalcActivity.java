@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -17,7 +19,7 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calc);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        MaterialButton btn = findViewById(R.id.btn);
+        ImageButton btn = findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
