@@ -1,15 +1,20 @@
 package com.doda.project555;
 
-import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -30,6 +35,7 @@ import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
+    public static final String APP_PREFERENCES = "mySettings";
     private AppBarConfiguration mAppBarConfiguration;
     Boolean swi;
 
@@ -37,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final SharedPreferences mySettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-6675273839004883~5892550117");
 
@@ -62,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home)
@@ -92,6 +99,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup container = (ViewGroup) drawerSwitch.getParent();
+        final View root1 = inflater.inflate(R.layout.nav_header_main, container, false);
+        navigationView = root1.findViewById(R.id.nav_view);
+
+        /*LayoutInflater inflater = getLayoutInflater();
+        ViewGroup container = (ViewGroup) drawerSwitch.getParent();
+        final View root1 = inflater.inflate(R.layout.nav_header_main, container, false);
+        TextView name = root1.findViewById(R.id.nav_user_name);
+        name.setText("qwerty");
+        Toast.makeText(this, qwerty, Toast.LENGTH_SHORT).show();*/
+        setUserName(mySettings, navigationView);
+    }
+
+    public static void setUserName (SharedPreferences mySettings, NavigationView navigationView) {
+        String qwerty = mySettings.getString("NAME", "User name");
+        View header = navigationView.getHeaderView(0);
+        TextView name = header.findViewById(R.id.nav_user_name);
+        name.setText(qwerty);
     }
 
     @Override
