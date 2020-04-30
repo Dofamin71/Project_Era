@@ -92,7 +92,7 @@ public class AccountFragment extends Fragment {
                             .build(),
                     RC_SIGN_IN);
         } else {
-            Toast.makeText(getContext(), "СЛЫШЬ, МЫШЬ. ТЫ УЖЕ ЗАШЕЛ!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "СЛЫШЬ, МЫШЬ, ТЫ УЖЕ ЗАШЕЛ!", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -71,25 +71,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        swi = mySettings.getBoolean("SWITCH", true);
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).contains("SWITCH")) {
-            swi = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("SWITCH", swi);
-        } else {
-            swi = true;
-        }
-        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications); // This is the menu item that contains your switch
-        Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.notifications);
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications);
+        final Switch drawerSwitch = menuItem.getActionView().findViewById(R.id.notifications);
         drawerSwitch.setChecked(swi);
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    swi = true;
-                    Toast.makeText(getApplicationContext(), "Switch turned on", Toast.LENGTH_SHORT).show();
-                } else {
-                    swi = false;
-                    Toast.makeText(getApplicationContext(), "Switch turned off", Toast.LENGTH_SHORT).show();
-                }
+                swi = isChecked;
+                drawerSwitch.setChecked(swi);
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putBoolean("SWITCH", swi);
+                ed.apply();
             }
         });
     }
@@ -113,10 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode == RC_SIGN_IN) {
             if(resultCode == RESULT_OK) {
+                String name = FirebaseAuth.getInstance()
+                        .getCurrentUser()
+                        .getDisplayName();
+                if(name == null)name = "";
                 Toast.makeText(this,
-                        "Successfully signed in. Welcome " + FirebaseAuth.getInstance()
-                                .getCurrentUser()
-                                .getDisplayName(),
+                        "Successfully signed in. Welcome " + name,
                         Toast.LENGTH_LONG)
                         .show();
             } else {
@@ -124,13 +120,10 @@ public class MainActivity extends AppCompatActivity {
                         "We couldn't sign you in. Please try again later.",
                         Toast.LENGTH_LONG)
                         .show();
-                // Close the app
                 finish();
             }
         }
     }
-
-    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onDestroy() {
         super.onDestroy();
