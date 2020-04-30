@@ -50,9 +50,15 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "ЖМЯК", Toast.LENGTH_SHORT ).show();
+                /*Fragment youFragment = new Fragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.nav_home, youFragment)
+                        .commit();
                 Toast.makeText(getApplicationContext(),
                         "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
-                openCalc(view);
+                openCalc(view);*/
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -99,11 +105,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
-    }
-
-    public void openCalc(View view){
-        Intent intent = new Intent(this, CalcActivity.class);
-        startActivity(intent);
     }
 
     @Override

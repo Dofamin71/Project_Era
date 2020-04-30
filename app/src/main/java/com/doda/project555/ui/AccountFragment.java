@@ -96,10 +96,6 @@ public class AccountFragment extends Fragment {
         }
     }
 
-    private void synchronization() {
-
-    }
-
     @Override
     public void onPause() {
         super.onPause();
