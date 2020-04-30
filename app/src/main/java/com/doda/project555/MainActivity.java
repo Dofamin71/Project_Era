@@ -1,51 +1,42 @@
 package com.doda.project555;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Menu;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123;
-    public static final String APP_PREFERENCES = "mySettings";
     private AppBarConfiguration mAppBarConfiguration;
     Boolean swi;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final SharedPreferences mySettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-
-
 
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-6675273839004883~5892550117");
 
@@ -59,13 +50,19 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openCalc();
+                Toast.makeText(getApplicationContext(), "ЖМЯК", Toast.LENGTH_SHORT ).show();
+                /*Fragment youFragment = new Fragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.nav_home, youFragment)
+                        .commit();
+                Toast.makeText(getApplicationContext(),
+                        "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
+                openCalc(view);*/
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        TextView header = navigationView.getHeaderView(0).findViewById(R.id.user_name);
-        header.setText(mySettings.getString("FIO", ""));
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home)
@@ -74,19 +71,25 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        swi = mySettings.getBoolean("SWITCH", true);
 
-        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications);
-        final Switch drawerSwitch = menuItem.getActionView().findViewById(R.id.notifications);
+        if (PreferenceManager.getDefaultSharedPreferences(this).contains("SWITCH")) {
+            swi = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("SWITCH", swi);
+        } else {
+            swi = true;
+        }
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_notifications); // This is the menu item that contains your switch
+        Switch drawerSwitch = (Switch) menuItem.getActionView().findViewById(R.id.notifications);
         drawerSwitch.setChecked(swi);
         drawerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                swi = isChecked;
-                drawerSwitch.setChecked(swi);
-                SharedPreferences.Editor ed = mySettings.edit();
-                ed.putBoolean("SWITCH", swi);
-                ed.apply();
+                if (isChecked) {
+                    swi = true;
+                    Toast.makeText(getApplicationContext(), "Switch turned on", Toast.LENGTH_SHORT).show();
+                } else {
+                    swi = false;
+                    Toast.makeText(getApplicationContext(), "Switch turned off", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -104,23 +107,16 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration) || super.onSupportNavigateUp();
     }
 
-    public void openCalc(){
-        Intent intent = new Intent(this, CalcActivity.class);
-        startActivity(intent);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == RC_SIGN_IN) {
             if(resultCode == RESULT_OK) {
-                String name = FirebaseAuth.getInstance()
-                        .getCurrentUser()
-                        .getDisplayName();
-                if(name == null)name = "";
                 Toast.makeText(this,
-                        "Successfully signed in. Welcome " + name,
+                        "Successfully signed in. Welcome " + FirebaseAuth.getInstance()
+                                .getCurrentUser()
+                                .getDisplayName(),
                         Toast.LENGTH_LONG)
                         .show();
             } else {
@@ -128,10 +124,13 @@ public class MainActivity extends AppCompatActivity {
                         "We couldn't sign you in. Please try again later.",
                         Toast.LENGTH_LONG)
                         .show();
+                // Close the app
                 finish();
             }
         }
     }
+
+    @SuppressLint("CommitPrefEdits")
     @Override
     protected void onDestroy() {
         super.onDestroy();

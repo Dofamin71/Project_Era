@@ -3,7 +3,7 @@
     <color name="colorButtonNormal">#ffffff</color>
     <color name="colorWindowBackground">#4499ff</color>
     <color name="colorControlActivated">#4499ff</color>
-    <color name="colorControlHighlight">#33888888</color>
+    <color name="colorControlHighlight">#334499ff</color>
     <color name="colorAccent">#4499ff</color>
     <color name="colorPrimary">#4499ff</color>
     <color name="colorText">#37474f</color>
