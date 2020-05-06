@@ -3,19 +3,16 @@ package com.doda.project555.ui;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.ui.AppBarConfiguration;
 
 import com.doda.project555.MainActivity;
 import com.doda.project555.R;
@@ -37,10 +34,11 @@ public class AccountFragment extends Fragment {
 
     public String user_name;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_account, container, false);
-        View root1 = inflater.inflate(R.layout.nav_header_main, container, false);
+        View root1 = inflater.inflate(R.layout.activity_main, container, false);
+
         final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         final FloatingActionButton button1 = root.findViewById(R.id.sign_out_button);
@@ -71,12 +69,10 @@ public class AccountFragment extends Fragment {
         button3.setOnClickListener(oclBtnOk3);
 
         final NavigationView navigationView = root1.findViewById(R.id.nav_view);
-
         final EditText editText = root.findViewById(R.id.user_name);
         editText.setOnKeyListener(new View.OnKeyListener(){
             public boolean onKey(View v, int keyCode, KeyEvent event){
                 if(event.getAction() == KeyEvent.ACTION_DOWN && (keyCode == KeyEvent.KEYCODE_ENTER)){
-                    // сохраняем текст, введенный до нажатия Enter в переменную
                     user_name = editText.getText().toString();
                     SharedPreferences.Editor ed = mySettings.edit();
                     ed.putString("NAME", user_name);
@@ -87,22 +83,6 @@ public class AccountFragment extends Fragment {
                 return false;
             }
         });
-
-        /*editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });*/
         return root;
     }
 
@@ -121,6 +101,9 @@ public class AccountFragment extends Fragment {
     }
 
     private void delete() {
+        SharedPreferences.Editor ed = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE).edit();
+        ed.putString("NAME", null);
+        ed.apply();
         AuthUI.getInstance()
                 .delete(getContext())
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

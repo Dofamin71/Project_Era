@@ -43,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final SharedPreferences mySettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        final NavigationView navigationView = findViewById(R.id.nav_view);
+
+        setUserName(mySettings, navigationView);
 
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-6675273839004883~5892550117");
 
@@ -93,26 +96,13 @@ public class MainActivity extends AppCompatActivity {
                 ed.apply();
             }
         });
-
-        LayoutInflater inflater = getLayoutInflater();
-        ViewGroup container = (ViewGroup) drawerSwitch.getParent();
-        final View root1 = inflater.inflate(R.layout.nav_header_main, container, false);
-        navigationView = root1.findViewById(R.id.nav_view);
-
-        /*LayoutInflater inflater = getLayoutInflater();
-        ViewGroup container = (ViewGroup) drawerSwitch.getParent();
-        final View root1 = inflater.inflate(R.layout.nav_header_main, container, false);
-        TextView name = root1.findViewById(R.id.nav_user_name);
-        name.setText("qwerty");
-        Toast.makeText(this, qwerty, Toast.LENGTH_SHORT).show();*/
-        setUserName(mySettings, navigationView);
     }
 
     public static void setUserName (SharedPreferences mySettings, NavigationView navigationView) {
         String qwerty = mySettings.getString("NAME", "User name");
-        View header = navigationView.getHeaderView(0);
-        TextView name = header.findViewById(R.id.nav_user_name);
+        TextView name = navigationView.getHeaderView(0).findViewById(R.id.nav_user_name);
         name.setText(qwerty);
+
     }
 
     @Override
