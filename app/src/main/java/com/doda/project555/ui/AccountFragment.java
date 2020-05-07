@@ -1,9 +1,15 @@
 package com.doda.project555.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.doda.project555.MainActivity.APP_PREFERENCES;
+
 public class AccountFragment extends Fragment {
 
     private static final int RC_SIGN_IN = 123;
@@ -26,6 +34,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_account, container, false);
+        final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         final FloatingActionButton button1 = root.findViewById(R.id.sign_out_button);
         final FloatingActionButton button2 = root.findViewById(R.id.delete_button);
         final FloatingActionButton button3 = root.findViewById(R.id.login_button);
@@ -50,6 +59,28 @@ public class AccountFragment extends Fragment {
         button1.setOnClickListener(oclBtnOk1);
         button2.setOnClickListener(oclBtnOk2);
         button3.setOnClickListener(oclBtnOk3);
+
+        final TextView header = this.getActivity().findViewById(R.id.user_name);
+        final EditText fio = root.findViewById(R.id.user_name);
+        fio.setText(mySettings.getString("FIO", ""));
+        fio.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                header.setText(fio.getText());
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putString("FIO", String.valueOf(fio.getText()));
+                ed.apply();
+            }
+        });
+
         return root;
     }
 
