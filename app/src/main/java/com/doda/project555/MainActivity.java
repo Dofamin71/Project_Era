@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES = "mySettings";
     private AppBarConfiguration mAppBarConfiguration;
     Boolean swi;
+    final Fragment fragment_calc_1 = new Fragment(R.layout.fragment_calc_1);
+    final Fragment fragment_calc_2 = new Fragment(R.layout.fragment_calc_2);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.e("Destroy", "onDestroy");
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("SWITCH", swi);
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("SWITCH", swi).apply();
     }
 
     @Override
@@ -167,5 +170,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         Log.e("Stop", "onStop");
+    }
+
+    public void calc_further_1(View v){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_calc, fragment_calc_2)
+                .commit();
+    }
+    public void calc_back_2(View v){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_calc, fragment_calc_1)
+                .commit();
     }
 }

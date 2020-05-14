@@ -27,14 +27,13 @@ public class CalcFragment extends Fragment {
         final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         final Fragment fragment_calc_1 = new Fragment(R.layout.fragment_calc_1);
         final Fragment fragment_calc_2 = new Fragment(R.layout.fragment_calc_2);
-        final FragmentManager fragmentManager = getFragmentManager();
-
+        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        View root = inflater.inflate(R.layout.calc_main, container, false);
         View fc1 = inflater.inflate(R.layout.fragment_calc_1, container, false);
         View fc2 = inflater.inflate(R.layout.fragment_calc_2, container, false);
-
-        Button further = fc1.findViewById(R.id.further);
-        Button back = fc2.findViewById(R.id.back);
-        LinearLayout linearLayout = fc2.findViewById(R.id.linearLayout);
+        fragmentManager.beginTransaction()
+                .replace(R.id.layout_calc, fragment_calc_1)
+                .commit();
 
         CheckBox cb_russian = fc1.findViewById(R.id.russian);
         CheckBox cb_math_base = fc1.findViewById(R.id.math_base);
@@ -70,33 +69,6 @@ public class CalcFragment extends Fragment {
         mySettings.edit().putBoolean("spanish", cb_spanish.isChecked());
         mySettings.edit().putBoolean("chinese", cb_chinese.isChecked());
 
-        View.OnClickListener oclfurther = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentManager.beginTransaction()
-                        //.remove(fragment_calc_1)
-                        .replace(R.id.nav_calc, fragment_calc_2)
-                        .commit();
-            }
-        };
-
-        View.OnClickListener oclback = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentManager.beginTransaction()
-                        //.remove(fragment_calc_2)
-                        .replace(R.id.nav_calc, fragment_calc_1)
-                        .commit();
-            }
-        };
-
-        further.setOnClickListener(oclfurther);
-        back.setOnClickListener(oclback);
-
-        return fc1;
-    }
-
-    void create(String id) {
-
+        return root;
     }
 }

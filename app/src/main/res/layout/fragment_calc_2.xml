@@ -41,6 +41,7 @@
             android:padding="15dp"
             android:textAllCaps="false"
             android:textSize="20sp"
+            android:onClick="calc_back_2"
             android:text="@string/back" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
