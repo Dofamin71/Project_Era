@@ -17,6 +17,9 @@
     <string name="menu_help">Помощь</string>
     <string name="menu_calc">Калькулятор</string>
 
+    <string name="calc_text1">Выберите предметы из списка</string>
+    <string name="calc_text2">Введите свои баллы</string>
+
     <string name="ad_banner_main">ca-app-pub-6675273839004883/8319047689</string>
     <string name="ad_banner_test">ca-app-pub-3940256099942544/6300978111</string>
 
@@ -32,4 +35,23 @@
     <string name="gallery">This is gallery fragment</string>
     <string name="home">This is home fragment</string>
     <string name="slideshow">This is slideshow fragment</string>
+
+    <string name="russian">Русский язык</string>
+    <string name="math_base">Математика (база)</string>
+    <string name="math_pro">Математика (профиль)</string>
+    <string name="physics">Физика</string>
+    <string name="chemistry">Химия</string>
+    <string name="computer_science">Информатика и ИКТ</string>
+    <string name="biology">Биология</string>
+    <string name="geography">География</string>
+    <string name="history">История</string>
+    <string name="social_science">Обществознание</string>
+    <string name="literature">Литература</string>
+    <string name="english">Английский язык</string>
+    <string name="german">Немецкий язык</string>
+    <string name="french">Французский язык</string>
+    <string name="spanish">Испанский язык</string>
+    <string name="chinese">Китайский язык</string>
+    <string name="further">Далее</string>
+    <string name="back">Назад</string>
 </resources>

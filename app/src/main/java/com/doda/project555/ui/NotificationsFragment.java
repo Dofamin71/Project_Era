@@ -12,10 +12,10 @@ import com.doda.project555.R;
 
 public class NotificationsFragment extends Fragment {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        return inflater.inflate(R.layout.fragment_notifications, container, false);
+        return root;
     }
 }

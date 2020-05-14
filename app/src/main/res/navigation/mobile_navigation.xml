@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
@@ -21,22 +22,27 @@
         android:id="@+id/nav_account"
         android:name="com.doda.project555.ui.AccountFragment"
         android:label="@string/menu_account" />
+
     <fragment
         android:id="@+id/nav_calendar"
         android:name="com.doda.project555.ui.CalendarFragment"
         android:label="@string/menu_calendar" />
+
     <fragment
         android:id="@+id/nav_notifications"
         android:name="com.doda.project555.ui.NotificationsFragment"
         android:label="@string/menu_notifications" />
+
     <fragment
         android:id="@+id/nav_help"
         android:name="com.doda.project555.ui.HelpFragment"
         android:label="@string/menu_help" />
+
     <fragment
         android:id="@+id/nav_pay"
         android:name="com.doda.project555.ui.PayFragment"
         android:label="@string/menu_pay" />
+
     <fragment
         android:id="@+id/nav_calc"
         android:name="com.doda.project555.ui.CalcFragment"

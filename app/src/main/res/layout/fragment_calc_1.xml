@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:textColor="@color/colorBar"
+            android:gravity="center"
+            android:text="@string/calc_text1"
+            android:textSize="25sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
+
+                <CheckBox
+                    android:id="@+id/russian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/russian"
+                    android:checked="true"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/math_base"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/math_base"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/math_pro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/math_pro"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/physics"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/physics"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/chemistry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/chemistry"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/computer_science"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/computer_science"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/biology"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/biology"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/geography"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/geography"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/history"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/social_science"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/social_science"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/literature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/literature"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/english"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/english"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/german"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/german"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/french"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/french"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/spanish"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/spanish"
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/chinese"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:text="@string/chinese"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:theme="@style/AppTheme"
+            android:id="@+id/further"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/further"
+            android:padding="15dp"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

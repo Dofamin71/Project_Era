@@ -31,13 +31,17 @@ public class AccountFragment extends Fragment {
 
     private static final int RC_SIGN_IN = 123;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_account, container, false);
+
         final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        final TextView header = this.getActivity().findViewById(R.id.nav_user_name);
+        final EditText fio = root.findViewById(R.id.user_name);
         final FloatingActionButton button1 = root.findViewById(R.id.sign_out_button);
         final FloatingActionButton button2 = root.findViewById(R.id.delete_button);
         final FloatingActionButton button3 = root.findViewById(R.id.login_button);
+
         View.OnClickListener oclBtnOk1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,21 +52,24 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 delete();
+                mySettings.edit().putString("FIO", null);
+                header.setText("ФИО");
+                fio.setText(null);
             }
         };
+
         View.OnClickListener oclBtnOk3 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
         };
+
         button1.setOnClickListener(oclBtnOk1);
         button2.setOnClickListener(oclBtnOk2);
         button3.setOnClickListener(oclBtnOk3);
 
-        final TextView header = this.getActivity().findViewById(R.id.user_name);
-        final EditText fio = root.findViewById(R.id.user_name);
-        fio.setText(mySettings.getString("FIO", ""));
+        fio.setText(mySettings.getString("FIO", null));
         fio.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -80,7 +87,6 @@ public class AccountFragment extends Fragment {
                 ed.apply();
             }
         });
-
         return root;
     }
 
