@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="id">
+        <item>russian</item>
+        <item>math_base</item>
+        <item>math_pro</item>
+        <item>physics</item>
+        <item>chemistry</item>
+        <item>computer_science</item>
+        <item>biology</item>
+        <item>geography</item>
+        <item>history</item>
+        <item>social_science</item>
+        <item>literature</item>
+        <item>english</item>
+        <item>german</item>
+        <item>french</item>
+        <item>spanish</item>
+        <item>chinese</item>
+        <item>further</item>
+        <item>back</item>
+    </string-array>
+</resources>

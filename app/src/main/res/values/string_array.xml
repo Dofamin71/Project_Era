@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="disciplines">
+        <item name="russian">Русский язык</item>
+        <item name="math_base">Математика (база)</item>
+        <item name="math_pro">Математика (профиль)</item>
+        <item name="physics">Физика</item>
+        <item name="chemistry">Химия</item>
+        <item name="computer_science">Информатика и ИКТ</item>
+        <item name="biology">Биология</item>
+        <item name="geography">География</item>
+        <item name="history">История</item>
+        <item name="social_science">Обществознание</item>
+        <item name="literature">Литература</item>
+        <item name="english">Английский язык</item>
+        <item name="german">Немецкий язык</item>
+        <item name="french">Французский язык</item>
+        <item name="spanish">Испанский язык</item>
+        <item name="chinese">Китайский язык</item>
+        <item name="further">Далее</item>
+        <item name="back">Назад</item>
+    </string-array>
+</resources>
