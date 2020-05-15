@@ -174,12 +174,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void calc_further_1(View v){
         getSupportFragmentManager().beginTransaction()
+                .addToBackStack("1_to_2")
                 .replace(R.id.layout_calc, fragment_calc_2)
                 .commit();
     }
     public void calc_back_2(View v){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_calc, fragment_calc_1)
+                .remove(fragment_calc_2)
                 .commit();
     }
 }

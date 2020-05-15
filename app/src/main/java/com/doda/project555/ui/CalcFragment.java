@@ -32,7 +32,7 @@ public class CalcFragment extends Fragment {
         View fc1 = inflater.inflate(R.layout.fragment_calc_1, container, false);
         View fc2 = inflater.inflate(R.layout.fragment_calc_2, container, false);
         fragmentManager.beginTransaction()
-                .replace(R.id.layout_calc, fragment_calc_1)
+                .add(R.id.layout_calc, fragment_calc_1)
                 .commit();
 
         CheckBox cb_russian = fc1.findViewById(R.id.russian);
