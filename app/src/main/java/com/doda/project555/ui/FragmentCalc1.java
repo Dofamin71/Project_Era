@@ -1,6 +1,5 @@
 package com.doda.project555.ui;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,48 +8,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.navigation.Navigation;
 
 import com.doda.project555.R;
 
 import static com.doda.project555.MainActivity.APP_PREFERENCES;
 
-public class CalcFragment extends Fragment {
+public class FragmentCalc1 extends Fragment {
 
-    @SuppressLint("CommitPrefEdits")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        final Fragment fragment_calc_1 = new Fragment(R.layout.fragment_calc_1);
-        final Fragment fragment_calc_2 = new Fragment(R.layout.fragment_calc_2);
-        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        View root = inflater.inflate(R.layout.calc_main, container, false);
-        View fc1 = inflater.inflate(R.layout.fragment_calc_1, container, false);
-        View fc2 = inflater.inflate(R.layout.fragment_calc_2, container, false);
-        fragmentManager.beginTransaction()
-                .replace(R.id.layout_calc, fragment_calc_1)
-                .commit();
+        View root = inflater.inflate(R.layout.fragment_calc_1, container, false);
+        Button furtherbtn = root.findViewById(R.id.further);
+        furtherbtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_calc_1_to_nav_calc_2));
 
-        CheckBox cb_russian = fc1.findViewById(R.id.russian);
-        CheckBox cb_math_base = fc1.findViewById(R.id.math_base);
-        CheckBox cb_math_pro = fc1.findViewById(R.id.math_pro);
-        CheckBox cb_physics = fc1.findViewById(R.id.physics);
-        CheckBox cb_chemistry = fc1.findViewById(R.id.chemistry);
-        CheckBox cb_computer_science = fc1.findViewById(R.id.computer_science);
-        CheckBox cb_biology = fc1.findViewById(R.id.biology);
-        CheckBox cb_geography = fc1.findViewById(R.id.geography);
-        CheckBox cb_history = fc1.findViewById(R.id.history);
-        CheckBox cb_social_science = fc1.findViewById(R.id.social_science);
-        CheckBox cb_literature = fc1.findViewById(R.id.literature);
-        CheckBox cb_english = fc1.findViewById(R.id.english);
-        CheckBox cb_german = fc1.findViewById(R.id.german);
-        CheckBox cb_french = fc1.findViewById(R.id.french);
-        CheckBox cb_spanish = fc1.findViewById(R.id.spanish);
-        CheckBox cb_chinese = fc1.findViewById(R.id.chinese);
+        CheckBox cb_russian = root.findViewById(R.id.russian);
+        CheckBox cb_math_base = root.findViewById(R.id.math_base);
+        CheckBox cb_math_pro = root.findViewById(R.id.math_pro);
+        CheckBox cb_physics = root.findViewById(R.id.physics);
+        CheckBox cb_chemistry = root.findViewById(R.id.chemistry);
+        CheckBox cb_computer_science = root.findViewById(R.id.computer_science);
+        CheckBox cb_biology = root.findViewById(R.id.biology);
+        CheckBox cb_geography = root.findViewById(R.id.geography);
+        CheckBox cb_history = root.findViewById(R.id.history);
+        CheckBox cb_social_science = root.findViewById(R.id.social_science);
+        CheckBox cb_literature = root.findViewById(R.id.literature);
+        CheckBox cb_english = root.findViewById(R.id.english);
+        CheckBox cb_german = root.findViewById(R.id.german);
+        CheckBox cb_french = root.findViewById(R.id.french);
+        CheckBox cb_spanish = root.findViewById(R.id.spanish);
+        CheckBox cb_chinese = root.findViewById(R.id.chinese);
 
         mySettings.edit().putBoolean("russian", cb_russian.isChecked());
         mySettings.edit().putBoolean("math_base", cb_math_base.isChecked());

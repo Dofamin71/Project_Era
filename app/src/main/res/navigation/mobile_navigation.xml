@@ -10,41 +10,200 @@
         android:id="@+id/nav_home"
         android:name="com.doda.project555.ui.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/to_nav_university"
+            app:destination="@id/nav_university"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_account"
+            app:destination="@id/nav_account"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_calendar"
+            app:destination="@id/nav_calendar"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_notifications"
+            app:destination="@id/nav_notifications"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_help"
+            app:destination="@id/nav_help"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_pay"
+            app:destination="@id/nav_pay"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_home_to_nav_calc_12"
+            app:destination="@id/nav_calc_1"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_university"
         android:name="com.doda.project555.ui.GalleryFragment"
         android:label="@string/menu_university"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+
+        <action
+            android:id="@+id/action_nav_university_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_account"
         android:name="com.doda.project555.ui.AccountFragment"
-        android:label="@string/menu_account" />
+        android:label="@string/menu_account"
+        tools:layout="@layout/fragment_account">
+
+        <action
+            android:id="@+id/action_nav_account_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_calendar"
         android:name="com.doda.project555.ui.CalendarFragment"
-        android:label="@string/menu_calendar" />
+        android:label="@string/menu_calendar"
+        tools:layout="@layout/fragment_calendar">
+
+        <action
+            android:id="@+id/action_nav_calendar_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_notifications"
         android:name="com.doda.project555.ui.NotificationsFragment"
-        android:label="@string/menu_notifications" />
+        android:label="@string/menu_notifications"
+        tools:layout="@layout/fragment_notifications">
+
+        <action
+            android:id="@+id/action_nav_notifications_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_help"
         android:name="com.doda.project555.ui.HelpFragment"
-        android:label="@string/menu_help" />
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help">
+
+        <action
+            android:id="@+id/action_nav_help_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_pay"
         android:name="com.doda.project555.ui.PayFragment"
-        android:label="@string/menu_pay" />
+        android:label="@string/menu_pay"
+        tools:layout="@layout/fragment_pay">
+
+        <action
+            android:id="@+id/action_nav_pay_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_calc"
-        android:name="com.doda.project555.ui.CalcFragment"
-        android:label="@string/menu_calc" />
+        android:id="@+id/nav_calc_1"
+        android:name="com.doda.project555.ui.FragmentCalc1"
+        android:label="@string/menu_calc"
+        tools:layout="@layout/fragment_calc_1">
+
+        <action
+            android:id="@+id/action_nav_calc_1_to_nav_calc_2"
+            app:destination="@id/nav_calc_2"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_nav_calc_1_to_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_calc_2"
+        android:name="com.doda.project555.ui.FragmentCalc2"
+        android:label="@string/menu_calc"
+        tools:layout="@layout/fragment_calc_2">
+
+        <action
+            android:id="@+id/action_nav_calc_2_to_nav_calc_1"
+            app:destination="@id/nav_calc_1"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
+
+    </fragment>
+
 </navigation>

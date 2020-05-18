@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/AppTheme">
+    android:theme="@style/AppTheme"
+    app:startDestination="@+id/fragment_calc_1"
+    tools:context=".ui.FragmentCalc1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -160,6 +164,7 @@
                     android:textSize="20sp" />
 
             </LinearLayout>
+
         </ScrollView>
 
         <Button
@@ -171,7 +176,8 @@
             android:text="@string/further"
             android:padding="15dp"
             android:textAllCaps="false"
-            android:onClick="calc_further_1"
             android:textSize="20sp" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -182,15 +182,4 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         Log.e("Stop", "onStop");
     }
-
-    public void calc_further_1(View v){
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_calc, fragment_calc_2)
-                .commit();
-    }
-    public void calc_back_2(View v){
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.layout_calc, fragment_calc_1)
-                .commit();
-    }
 }
