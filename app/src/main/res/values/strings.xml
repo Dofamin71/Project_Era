@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Настройки аккаунта</string>
 
-    <string name="menu_home">Главная</string>
+    <string name="menu_home">Новости</string>
     <string name="menu_university">Университеты</string>
     <string name="menu_calendar">Календарь событий</string>
     <string name="menu_account">Аккаунт</string>
@@ -23,18 +23,9 @@
     <string name="ad_banner_main">ca-app-pub-6675273839004883/8319047689</string>
     <string name="ad_banner_test">ca-app-pub-3940256099942544/6300978111</string>
 
-    <string name="Home_fragment">This is home fragment</string>
-    <string name="Gallery_fragment">This is gallery fragment</string>
-    <string name="Send_fragment">This is send fragment</string>
-    <string name="Share_fragment">This is share fragment</string>
-    <string name="Tools_fragment">This is tools fragment</string>
     <string name="DoDa">Dareten and Dofamin</string>
     <string name="disclaimer">Данное приложение является по большей мере развлекательным.
     Авторы не несут ответственность за оскорбление чувств верующих и унижение сексуальных меньшинств.</string>
-
-    <string name="gallery">This is gallery fragment</string>
-    <string name="home">This is home fragment</string>
-    <string name="slideshow">This is slideshow fragment</string>
 
     <string name="russian">Русский язык</string>
     <string name="math_base">Математика (база)</string>

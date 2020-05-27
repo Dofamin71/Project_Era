@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES = "mySettings";
     private AppBarConfiguration mAppBarConfiguration;
     Boolean swi;
-    final Fragment fragment_calc_1 = new Fragment(R.layout.fragment_calc_1);
-    final Fragment fragment_calc_2 = new Fragment(R.layout.fragment_calc_2);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,27 +52,33 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "ЖМЯК", Toast.LENGTH_SHORT ).show();
-                /*Fragment youFragment = new Fragment();
+                Fragment youFragment = new Fragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.nav_home, youFragment)
                         .commit();
                 Toast.makeText(getApplicationContext(),
                         "НУ И ЧЕГО ТЫ ТЫКАЕШЬ, РОБИТ ОНО",Toast.LENGTH_SHORT).show();
-                openCalc(view);*/
+                openCalc(view);
             }
         });
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_calculator" />*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         TextView header = navigationView.getHeaderView(0).findViewById(R.id.nav_user_name);
         header.setText(mySettings.getString("FIO", "ФИО"));
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home)
                 .setDrawerLayout(drawer)
                 .build();

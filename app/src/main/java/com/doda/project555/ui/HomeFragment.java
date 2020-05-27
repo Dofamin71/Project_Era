@@ -1,17 +1,24 @@
 package com.doda.project555.ui;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.doda.project555.NewsBlock;
 import com.doda.project555.R;
 
 import org.xml.sax.Attributes;
@@ -35,12 +42,11 @@ public class HomeFragment extends Fragment {
 
     private static String rssResult = "";
     private static boolean item = false;
-    private static TextView rss;
+    public static View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        rss = root.findViewById(R.id.rss);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         RSSTask rssT = new RSSTask();
         try {
             rssT.execute("https://edu.ru/news/egegia/feed.rss").get();
@@ -77,6 +83,7 @@ public class HomeFragment extends Fragment {
         }
         return "Program Failed";
     }
+
     private static class RSSHandler extends DefaultHandler {
 
         public void startElement(String uri, String localName, String qName,
@@ -99,7 +106,8 @@ public class HomeFragment extends Fragment {
                 rssResult = rssResult +(cdata.trim()).replaceAll("\\s+", " ")+"\t";
         }
     }
-    private static class RSSTask extends AsyncTask<String, Void, String> {
+
+    private class RSSTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected void onPreExecute() {
@@ -114,11 +122,15 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            result = result.replace("title: ", "\n/title ")
-                    .replace("description: ", "\n/desc ")
-                    .replace("link: ", "\n/link ")
-                    .replace("pubDate: ", "\n/pubDate ");
-            rss.setText(result);
+            int num=1;
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 25, 0, 25);
+            Context context = getContext();
+            for(int i=0; i<20; i++){
+                NewsBlock newsBlock = new NewsBlock();
+                newsBlock.createNewsBlock(result, num, params, context);
+                num++;
+            }
         }
     }
 }

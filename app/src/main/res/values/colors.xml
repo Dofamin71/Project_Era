@@ -7,6 +7,7 @@
     <color name="colorAccent">#4499ff</color>
     <color name="colorPrimary">#4499ff</color>
     <color name="colorText">#ffffff</color>
+    <color name="colorBackText">#aaaaaa</color>
     <color name="colorBackgroundFloating">#000000</color>
     <color name="colorSwitchThumbNormal">#000000</color>
     <color name="colorControlNormal">#000000</color>
