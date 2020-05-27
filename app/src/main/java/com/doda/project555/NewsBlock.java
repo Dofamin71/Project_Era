@@ -4,17 +4,21 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.doda.project555.ui.HomeFragment;
 
+public class NewsBlock extends AppCompatActivity {
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -35,19 +39,21 @@ public class NewsBlock extends HomeFragment {
         String[] subStr = result.split("title: ");
         String str = subStr[num].replace("\t", "");
         subStr = str.split("description: ");
-        title = subStr[0];
+        title = subStr[0]+".";
         str = subStr[1];
         subStr = str.split("link: ");
-        description = subStr[0];
+        description = subStr[0]+".";
         str = subStr[1];
         subStr = str.split("pubDate: ");
         link = subStr[0];
         pubDate = subStr[1];
         new Parser().execute();
+        link = subStr[0]+".";
+        pubDate = "("+subStr[1]+")";
     }
 
-    public void createNewsBlock (String result, int num, LinearLayout.LayoutParams params, final Context context){
-        LinearLayout newsBlock = new LinearLayout(context);
+    public void createNewsBlock (String result, int num, FrameLayout.LayoutParams params, final Context context){
+        FrameLayout newsBlock = new FrameLayout(context);
         main(result, num);
 
         LinearLayout layout = new LinearLayout(context);
@@ -55,20 +61,21 @@ public class NewsBlock extends HomeFragment {
 
         TextView titleView = createParagraph(title, context);
         titleView.setTextColor(Color.parseColor("#ffffff"));
-        titleView.setTextSize(22);
+        titleView.setTextSize(21);
         layout.addView(titleView);
 
         TextView descriptionView = createParagraph(description, context);
-        descriptionView.setTextColor(Color.parseColor("#dedede"));
+        descriptionView.setTextColor(Color.parseColor("#e6e6e6"));
         descriptionView.setPadding(0,20,0,20);
-        descriptionView.setTextSize(18);
+        descriptionView.setTextSize(17);
         layout.addView(descriptionView);
 
         TextView pubDateView = createParagraph(pubDate, context);
         pubDateView.setTextColor(Color.parseColor("#ffffff"));
         pubDateView.setTextSize(13);
-        LinearLayout buttonLayout = new LinearLayout(context);
-        buttonLayout.setOrientation(LinearLayout.HORIZONTAL);
+        pubDateView.setGravity(Gravity.CENTER);
+        layout.addView(pubDateView);
+
         Button button = new Button(context);
         OnClickListener gotoFrag = new OnClickListener() {
             @Override
@@ -77,16 +84,13 @@ public class NewsBlock extends HomeFragment {
             }
         };
         button.setOnClickListener(gotoFrag);
-        button.setText("Далее");
-        button.setTextColor(Color.parseColor("#ffffff"));
-        buttonLayout.addView(pubDateView);
-        buttonLayout.addView(button);
-        layout.addView(buttonLayout);
+        button.setBackground(null);
 
         newsBlock.addView(layout);
         newsBlock.setBackground(ContextCompat.getDrawable(context, R.drawable.rounded));
         newsBlock.setPadding(30,30,30,30);
         newsBlock.setLayoutParams(params);
+        newsBlock.addView(button);
         linear.addView(newsBlock);
     }
 
@@ -97,6 +101,12 @@ public class NewsBlock extends HomeFragment {
         paragraph.setTextSize(15);
         return paragraph;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+}
     class Parser extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
