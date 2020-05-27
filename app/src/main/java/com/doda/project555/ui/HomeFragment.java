@@ -1,21 +1,15 @@
 package com.doda.project555.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.doda.project555.NewsBlock;
@@ -122,14 +116,15 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            int num=1;
+            if(result.split("title: ").length == 1){
+                return;
+            }
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 25, 0, 25);
             Context context = getContext();
-            for(int i=0; i<20; i++){
+            for(int i=1; i<=20; ++i){
                 NewsBlock newsBlock = new NewsBlock();
-                newsBlock.createNewsBlock(result, num, params, context);
-                num++;
+                newsBlock.createNewsBlock(result, i, params, context);
             }
         }
     }
