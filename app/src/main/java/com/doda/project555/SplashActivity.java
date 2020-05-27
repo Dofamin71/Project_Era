@@ -46,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
             if(name == null)name = "";
             Toast.makeText(this,
                     "Welcome " + name,
-                    Toast.LENGTH_LONG)
+                    Toast.LENGTH_SHORT)
                     .show();
 
             new Handler().postDelayed(new Runnable() {
