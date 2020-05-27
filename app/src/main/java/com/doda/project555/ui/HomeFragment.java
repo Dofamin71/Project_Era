@@ -117,7 +117,9 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            int num=1;
+            if(result.split("title: ").length == 1){
+                return;
+            }
             FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 25, 0, 25);
             Context context = getContext();
