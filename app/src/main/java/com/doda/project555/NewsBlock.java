@@ -142,7 +142,7 @@ public class NewsBlock extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            fullText = result;
+            fullText = result.replaceAll("<.*>", "").replaceAll("&nbsp;", "");
             Log.d("text", fullText);
         }
     }
