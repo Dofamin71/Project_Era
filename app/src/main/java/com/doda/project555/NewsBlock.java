@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.Gravity;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -111,7 +113,7 @@ public class NewsBlock extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-             fullText = result;
+            fullText = result;
         }
     }
 }
