@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.navigation.Navigation;
 
 import com.doda.project555.ui.HomeFragment;
 
@@ -30,7 +31,7 @@ public class NewsBlock extends AppCompatActivity {
     private String[] subStr;
     private String str;
     private String link;
-    private String fullText;
+    public String fullText;
 
     private LinearLayout linear = HomeFragment.root.findViewById(R.id.linear);
 
@@ -44,8 +45,6 @@ public class NewsBlock extends AppCompatActivity {
         description = subStr[0]+".";
         str = subStr[1];
         subStr = str.split("pubDate: ");
-        link = subStr[0];
-        pubDate = "("+subStr[1]+")";
         link = subStr[0];
         pubDate = "(" + subStr[1] + ")";
         new Parser().execute();
@@ -76,13 +75,7 @@ public class NewsBlock extends AppCompatActivity {
         layout.addView(pubDateView);
 
         Button button = new Button(context);
-        OnClickListener gotoFrag = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"Не тыкай, работает", Toast.LENGTH_LONG).show();
-            }
-        };
-        button.setOnClickListener(gotoFrag);
+        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_newsFragment));
         button.setBackground(null);
 
         newsBlock.addView(layout);
