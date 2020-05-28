@@ -3,7 +3,6 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.navigation.Navigation;
 
 import com.doda.project555.ui.HomeFragment;
 
@@ -29,7 +29,7 @@ public class NewsBlock extends AppCompatActivity {
     private String[] subStr;
     private String str;
     private String link;
-    private String fullText;
+    public String fullText;
 
     private LinearLayout linear = HomeFragment.root.findViewById(R.id.linear);
 
@@ -73,13 +73,7 @@ public class NewsBlock extends AppCompatActivity {
         layout.addView(pubDateView);
 
         Button button = new Button(context);
-        OnClickListener gotoFrag = new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context,"Не тыкай, работает", Toast.LENGTH_LONG).show();
-            }
-        };
-        button.setOnClickListener(gotoFrag);
+        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_newsFragment));
         button.setBackground(null);
 
         newsBlock.addView(layout);
