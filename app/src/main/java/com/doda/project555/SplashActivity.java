@@ -40,15 +40,6 @@ public class SplashActivity extends AppCompatActivity {
                             .build(),
                     RC_SIGN_IN);
         } else {
-            String name = FirebaseAuth.getInstance()
-                    .getCurrentUser()
-                    .getDisplayName();
-            if(name == null)name = "";
-            Toast.makeText(this,
-                    "Welcome " + name,
-                    Toast.LENGTH_SHORT)
-                    .show();
-
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

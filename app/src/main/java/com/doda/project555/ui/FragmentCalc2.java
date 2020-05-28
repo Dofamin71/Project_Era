@@ -20,7 +20,6 @@ import androidx.navigation.Navigation;
 import com.doda.project555.R;
 
 import static com.doda.project555.MainActivity.APP_PREFERENCES;
-import static java.sql.Types.NULL;
 
 public class FragmentCalc2 extends Fragment {
 
