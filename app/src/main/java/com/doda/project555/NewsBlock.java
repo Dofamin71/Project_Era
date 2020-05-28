@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.Gravity;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,27 +23,29 @@ import org.jsoup.Jsoup;
 
 import java.io.IOException;
 
-
-
 public class NewsBlock extends AppCompatActivity {
     private String title;
     private String description;
     private String pubDate;
+    private String[] subStr;
+    private String str;
     private String link;
     private String fullText;
 
     private LinearLayout linear = HomeFragment.root.findViewById(R.id.linear);
 
     private void main(String result, int num) {
-        String[] subStr = result.split("title: ");
-        String str = subStr[num].replace("\t", "");
+        subStr = result.split("title: ");
+        str = subStr[num].replace("\t", "");
         subStr = str.split("description: ");
-        title = subStr[0] + ".";
+        title = subStr[0]+".";
         str = subStr[1];
         subStr = str.split("link: ");
-        description = subStr[0];
+        description = subStr[0]+".";
         str = subStr[1];
         subStr = str.split("pubDate: ");
+        link = subStr[0];
+        pubDate = "("+subStr[1]+")";
         link = subStr[0];
         pubDate = "(" + subStr[1] + ")";
         new Parser().execute();
