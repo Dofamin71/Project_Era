@@ -40,7 +40,7 @@ public class NewsBlock extends AppCompatActivity {
         subStr = result.split("title: ");
         str = subStr[num].replace("\t", "");
         subStr = str.split("description: ");
-        title = subStr[0]+".";
+        title = "\t\t"+subStr[0]+".";
         str = subStr[1];
         subStr = str.split("link: ");
         description = "\t\t"+subStr[0]+".";

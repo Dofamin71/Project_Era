@@ -60,14 +60,6 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
 
-        <action
-            android:id="@+id/action_nav_home_to_newsFragment"
-            app:destination="@id/newsFragment"
-            app:enterAnim="@anim/fui_slide_in_right"
-            app:exitAnim="@anim/fui_slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"/>
-
     </fragment>
 
     <fragment
@@ -188,21 +180,6 @@
             app:popEnterAnim="@anim/fui_slide_in_right"
             app:popExitAnim="@anim/fui_slide_out_left" />
 
-    </fragment>
-
-    <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.doda.project555.ui.NewsFragment"
-        android:label="NewsFragment"
-        tools:layout="@layout/fragment_news">
-
-        <action
-            android:id="@+id/action_newsFragment_to_nav_home"
-            app:destination="@id/nav_home"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@anim/fui_slide_in_right"
-            app:popExitAnim="@anim/fui_slide_out_left"/>
     </fragment>
 
 </navigation>
