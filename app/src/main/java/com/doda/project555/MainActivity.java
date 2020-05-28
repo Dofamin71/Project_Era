@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         TextView header = navigationView.getHeaderView(0).findViewById(R.id.nav_user_name);
         header.setText(mySettings.getString("FIO", "ФИО"));
+        TextView header1 = navigationView.getHeaderView(0).findViewById(R.id.nav_user_city);
+        header1.setText(mySettings.getString("CITY", "Город"));
+        TextView header2 = navigationView.getHeaderView(0).findViewById(R.id.nav_user_mail);
+        header2.setText(mySettings.getString("MAIL", "Почта"));
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home)
                 .setDrawerLayout(drawer)
                 .build();

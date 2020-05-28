@@ -37,7 +37,11 @@ public class AccountFragment extends Fragment {
 
         final SharedPreferences mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         final TextView header = this.getActivity().findViewById(R.id.nav_user_name);
+        final TextView header1 = this.getActivity().findViewById(R.id.nav_user_city);
+        final TextView header2 = this.getActivity().findViewById(R.id.nav_user_mail);
         final EditText fio = root.findViewById(R.id.user_name);
+        final EditText city = root.findViewById(R.id.user_city);
+        final EditText mail = root.findViewById(R.id.user_mail);
         final FloatingActionButton button1 = root.findViewById(R.id.sign_out_button);
         final FloatingActionButton button2 = root.findViewById(R.id.delete_button);
         final FloatingActionButton button3 = root.findViewById(R.id.login_button);
@@ -84,6 +88,44 @@ public class AccountFragment extends Fragment {
                 header.setText(fio.getText());
                 SharedPreferences.Editor ed = mySettings.edit();
                 ed.putString("FIO", String.valueOf(fio.getText()));
+                ed.apply();
+            }
+        });
+
+        city.setText(mySettings.getString("CITY", null));
+        city.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                header1.setText(city.getText());
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putString("CITY", String.valueOf(city.getText()));
+                ed.apply();
+            }
+        });
+
+        mail.setText(mySettings.getString("MAIL", null));
+        mail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                header2.setText(mail.getText());
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putString("MAIL", String.valueOf(mail.getText()));
                 ed.apply();
             }
         });

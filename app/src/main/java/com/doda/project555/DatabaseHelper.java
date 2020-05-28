@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import static com.doda.project555.MainActivity.APP_PREFERENCES;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static String DB_PATH; // полный путь к базе данных
     private static String DB_NAME = "TestDB.db";
     private static final int SCHEMA = 1; // версия базы данных
     final static public String TABLE = "\"Test DB\""; // название таблицы в бд
