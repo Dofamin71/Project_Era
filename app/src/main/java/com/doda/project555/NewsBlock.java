@@ -3,7 +3,8 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.util.Log;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,7 +19,6 @@ import androidx.core.content.ContextCompat;
 import com.doda.project555.ui.HomeFragment;
 
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
@@ -34,8 +34,8 @@ public class NewsBlock extends AppCompatActivity {
     private LinearLayout linear = HomeFragment.root.findViewById(R.id.linear);
 
     private void main(String result, int num) {
-        String[] subStr = result.split("title: ");
-        String str = subStr[num].replace("\t", "");
+        subStr = result.split("title: ");
+        str = subStr[num].replace("\t", "");
         subStr = str.split("description: ");
         title = subStr[0]+".";
         str = subStr[1];
@@ -97,7 +97,12 @@ public class NewsBlock extends AppCompatActivity {
         paragraph.setTextSize(15);
         return paragraph;
     }
-}
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     class Parser extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
@@ -108,11 +113,6 @@ public class NewsBlock extends AppCompatActivity {
                 e.printStackTrace();
             }
             return text;
-        }
-
-        @Override
-        public void onBackPressed() {
-            super.onBackPressed();
         }
 
         @Override
