@@ -1,8 +1,8 @@
 package com.doda.project555.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +15,6 @@ import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener;
 
 import com.doda.project555.NewsBlock;
 import com.doda.project555.R;
@@ -31,21 +30,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import static com.doda.project555.MainActivity.APP_PREFERENCES;
+
 public class HomeFragment extends Fragment {
 
     private static String rssResult = "";
     private static boolean item = false;
     public static View root;
+    public SharedPreferences mySettings;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,13 +61,37 @@ public class HomeFragment extends Fragment {
             }
         }else {
             String result = mySettings.getString("RSS", "");
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0, 25, 0, 25);
-            for (int i = 1; i <= 20; ++i) {
-                NewsBlock newsBlock = new NewsBlock();
-                newsBlock.createNewsBlock(result, i, params, getContext());
+            if(!result.equals("")) {
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 25, 0, 25);
+                for (int i = 1; i <= 20; ++i) {
+                    NewsBlock newsBlock = new NewsBlock();
+                    newsBlock.createNewsBlock(result, i, params, getContext());
+                }
             }
         }
+        final SwipeRefreshLayout mSwipeRefreshLayout = root.findViewById(R.id.fragment_home);
+        SwipeRefreshLayout.OnRefreshListener listener = new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        RSSTask rssT = new RSSTask();
+                        try {
+                            rssT.execute("https://edu.ru/news/egegia/feed.rss").get();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, 1500);
+            }
+        };
+        mSwipeRefreshLayout.setColorSchemeColors(Color.parseColor("#4499ff"));
+        mSwipeRefreshLayout.setOnRefreshListener(listener);
         return root;
     }
 
