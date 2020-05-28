@@ -61,8 +61,8 @@
             app:popExitAnim="@android:anim/slide_out_right" />
 
         <action
-            android:id="@+id/action_nav_home_to_newsFragment"
-            app:destination="@id/newsFragment"
+            android:id="@+id/action_nav_home_to_galleryFragment"
+            app:destination="@id/nav_university"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left"
             app:popEnterAnim="@android:anim/slide_in_left"
@@ -191,13 +191,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/newsFragment"
-        android:name="com.doda.project555.ui.NewsFragment"
-        android:label="NewsFragment"
-        tools:layout="@layout/fragment_news">
+        android:id="@+id/nav_university"
+        android:name="com.doda.project555.ui.GalleryFragment"
+        android:label="@string/menu_university"
+        tools:layout="@layout/fragment_gallery" >
 
         <action
-            android:id="@+id/action_newsFragment_to_nav_home"
+            android:id="@+id/action_galleryFragment_to_nav_home"
             app:destination="@id/nav_home"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
