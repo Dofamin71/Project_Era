@@ -3,7 +3,6 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,15 +17,13 @@ import androidx.core.content.ContextCompat;
 
 import com.doda.project555.ui.HomeFragment;
 
-public class NewsBlock extends AppCompatActivity {
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
 
 
-public class NewsBlock extends HomeFragment {
+public class NewsBlock extends AppCompatActivity {
     private String title;
     private String description;
     private String pubDate;
@@ -39,17 +36,15 @@ public class NewsBlock extends HomeFragment {
         String[] subStr = result.split("title: ");
         String str = subStr[num].replace("\t", "");
         subStr = str.split("description: ");
-        title = subStr[0]+".";
+        title = subStr[0] + ".";
         str = subStr[1];
         subStr = str.split("link: ");
-        description = subStr[0]+".";
+        description = subStr[0];
         str = subStr[1];
         subStr = str.split("pubDate: ");
         link = subStr[0];
-        pubDate = subStr[1];
+        pubDate = "(" + subStr[1] + ")";
         new Parser().execute();
-        link = subStr[0]+".";
-        pubDate = "("+subStr[1]+")";
     }
 
     public void createNewsBlock (String result, int num, FrameLayout.LayoutParams params, final Context context){
@@ -106,7 +101,7 @@ public class NewsBlock extends HomeFragment {
     public void onBackPressed() {
         super.onBackPressed();
     }
-}
+
     class Parser extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
@@ -121,7 +116,7 @@ public class NewsBlock extends HomeFragment {
 
         @Override
         protected void onPostExecute(String result) {
-             fullText = result;
+            fullText = result;
         }
     }
 }

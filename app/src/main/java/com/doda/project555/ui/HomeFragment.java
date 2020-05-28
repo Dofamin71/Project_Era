@@ -1,6 +1,7 @@
 package com.doda.project555.ui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,28 +28,44 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import static com.doda.project555.MainActivity.APP_PREFERENCES;
+
 public class HomeFragment extends Fragment {
 
     private static String rssResult = "";
     private static boolean item = false;
     public static View root;
+    SharedPreferences mySettings;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_home, container, false);
-        RSSTask rssT = new RSSTask();
-        try {
-            rssT.execute("https://edu.ru/news/egegia/feed.rss").get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        mySettings = this.getActivity().getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        if(Calendar.getInstance().getTimeInMillis() - mySettings.getLong("LastRSSUpdate", 0) < 18000000) {
+            RSSTask rssT = new RSSTask();
+            try {
+                rssT.execute("https://edu.ru/news/egegia/feed.rss").get();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }else {
+            String result = mySettings.getString("RSS", "");
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0, 25, 0, 25);
+            for (int i = 1; i <= 20; ++i) {
+                NewsBlock newsBlock = new NewsBlock();
+                newsBlock.createNewsBlock(result, i, params, getContext());
+            }
         }
         return root;
     }
@@ -117,15 +134,26 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            if(result.split("title: ").length == 1){
-                return;
-            }
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 25, 0, 25);
             Context context = getContext();
-            for(int i=1; i<=20; ++i){
-                NewsBlock newsBlock = new NewsBlock();
-                newsBlock.createNewsBlock(result, i, params, context);
+            if(result.split("title: ").length != 1){
+                SharedPreferences.Editor ed = mySettings.edit();
+                ed.putString("RSS", result);
+                ed.putLong("LastRSSUpdate", Calendar.getInstance().getTimeInMillis());
+                ed.apply();
+                for (int i = 1; i <= 20; ++i) {
+                    NewsBlock newsBlock = new NewsBlock();
+                    newsBlock.createNewsBlock(result, i, params, context);
+                }
+            }else {
+                if(!mySettings.getString("RSS", "-1").equals("-1")){
+                    result = mySettings.getString("RSS", "");
+                    for (int i = 1; i <= 20; ++i) {
+                        NewsBlock newsBlock = new NewsBlock();
+                        newsBlock.createNewsBlock(result, i, params, context);
+                    }
+                }
             }
         }
     }
