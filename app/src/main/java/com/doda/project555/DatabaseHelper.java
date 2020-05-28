@@ -16,9 +16,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_PATH; // полный путь к базе данных
     private static String DB_NAME = "TestDB.db";
     private static final int SCHEMA = 1; // версия базы данных
-    final static public String TABLE = "Test DB"; // название таблицы в бд
+    final static public String TABLE = "\"Test DB\""; // название таблицы в бд
     // названия столбцов
-    final static public String Num1 = "№";
+    final static public String Num1 = "_id";
     final static public String Num2 = "№*";
     final static public String Num3 = "№**";
     final static public String name = "name";
@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     final static public String phys = "phys";
     final static public String essay = "essay";
     final static public String IA = "IA";
-    final static public String num = "num";
+    final static public String sum = "sum";
     private Context myContext;
 
     public DatabaseHelper(Context context) {
@@ -46,39 +46,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion,  int newVersion) {
     }
 
-    public void create_db(){
-        InputStream myInput = null;
-        OutputStream myOutput = null;
-        try {
-            File file = new File(DB_PATH);
-            if (!file.exists()) {
-                this.getReadableDatabase();
-                //получаем локальную бд как поток
-                myInput = myContext.getAssets().open(DB_NAME);
-                // Путь к новой бд
-                String outFileName = DB_PATH;
-
-                // Открываем пустую бд
-                myOutput = new FileOutputStream(outFileName);
-
-                // побайтово копируем данные
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = myInput.read(buffer)) > 0) {
-                    myOutput.write(buffer, 0, length);
-                }
-
-                myOutput.flush();
-                myOutput.close();
-                myInput.close();
-            }
-        }catch(IOException ex){
-            Log.d("DatabaseHelper", ex.getMessage());
-        }
+    public void create_db(Context context){
+        SQLiteDatabase db = context.openOrCreateDatabase("app.db", Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"Test DB\" (\n" +
+                "\"_id\"INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "\"№*\"INTEGER NOT NULL,\n" +
+                "\"№**\"INTEGER NOT NULL,\n" +
+                "\"name\"TEXT NOT NULL,\n" +
+                "\"certificate\"TEXT NOT NULL,\n" +
+                "\"type of receipt\"TEXT NOT NULL,\n" +
+                "\"math\"INTEGER NOT NULL,\n" +
+                "\"russian\"INTEGER NOT NULL,\n" +
+                "\"phys\"INTEGER NOT NULL,\n" +
+                "\"essay\"INTEGER NOT NULL,\n" +
+                "\"IA\"INTEGER NOT NULL,\n" +
+                "\"sum\"INTEGER NOT NULL\n" +
+                ");");
+        //db.execSQL("INSERT INTO \"Test DB\" VALUES" +
+        //       "(1,1,1,\"Сартасова Надежда Евгеньевна\",\"Копия\",\"Целевое [Б]\",78,96,58,0,0,232)");
     }
 
-    public SQLiteDatabase open()throws SQLException {
+    public SQLiteDatabase open(Context context)throws SQLException {
 
-        return SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE);
+        return SQLiteDatabase.openDatabase(String.valueOf(context.getDatabasePath("app.db")), null, SQLiteDatabase.OPEN_READWRITE);
     }
 }
