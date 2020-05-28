@@ -3,6 +3,7 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.Gravity;
 import android.os.Handler;
 import android.view.Gravity;
@@ -21,6 +22,8 @@ import androidx.navigation.Navigation;
 import com.doda.project555.ui.HomeFragment;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
@@ -102,18 +105,24 @@ public class NewsBlock extends AppCompatActivity {
     class Parser extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
-            String text ="Ошибка при получении текста новости";
+            StringBuilder text = new StringBuilder();
             try {
-                text = Jsoup.connect(link).get().text();
+                Document doc = Jsoup.connect(link).get();
+                for (Element paragraph : doc.getElementsByTag("p")) {
+                    if(!paragraph.toString().contains("<p class")) {
+                        text.append(paragraph);
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return text;
+            return text.toString().replace("<p>", "").replace("</p>", "\n\n");
         }
 
         @Override
         protected void onPostExecute(String result) {
             fullText = result;
+            Log.d("text", fullText);
         }
     }
 }

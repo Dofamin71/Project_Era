@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
     private static String rssResult = "";
     private static boolean item = false;
     public static View root;
-    public SharedPreferences mySettings;
+    private SharedPreferences mySettings;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
