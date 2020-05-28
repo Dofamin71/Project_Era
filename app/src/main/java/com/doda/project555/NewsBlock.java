@@ -13,11 +13,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.navigation.Navigation;
 
 import com.doda.project555.ui.HomeFragment;
 
@@ -28,13 +26,14 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 
 public class NewsBlock extends AppCompatActivity {
-    private String title;
+    public String title;
     private String description;
     private String pubDate;
     private String[] subStr;
     private String str;
     private String link;
     public String fullText;
+    private boolean flag = true;
 
     private LinearLayout linear = HomeFragment.root.findViewById(R.id.linear);
 
@@ -62,23 +61,45 @@ public class NewsBlock extends AppCompatActivity {
 
         TextView titleView = createParagraph(title, context);
         titleView.setTextColor(Color.parseColor("#ffffff"));
+        titleView.setBackground(ContextCompat.getDrawable(context, R.drawable.rounded_up));
         titleView.setTextSize(21);
         layout.addView(titleView);
 
-        TextView descriptionView = createParagraph(description, context);
+        final FrameLayout frame = new FrameLayout(context);
+        final TextView descriptionView = createParagraph(description, context);
         descriptionView.setTextColor(Color.parseColor("#e6e6e6"));
         descriptionView.setPadding(0,20,0,20);
         descriptionView.setTextSize(17);
-        layout.addView(descriptionView);
+        frame.addView(descriptionView);
+        layout.addView(frame);
 
         TextView pubDateView = createParagraph(pubDate, context);
         pubDateView.setTextColor(Color.parseColor("#ffffff"));
-        pubDateView.setTextSize(13);
         pubDateView.setGravity(Gravity.CENTER);
+        pubDateView.setTextSize(13);
         layout.addView(pubDateView);
 
         Button button = new Button(context);
-        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_newsFragment));
+        OnClickListener click = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    frame.removeAllViews();
+                    TextView text = new TextView(context);
+                    text.setPadding(0,20,0,20);
+                    text.setTextColor(Color.parseColor("#e6e6e6"));
+                    text.setText(fullText);
+                    text.setTextSize(17);
+                    frame.addView(text);
+                    flag = false;
+                } else {
+                    frame.removeAllViews();
+                    frame.addView(descriptionView);
+                    flag = true;
+                }
+            }
+        };
+        button.setOnClickListener(click);
         button.setBackground(null);
 
         newsBlock.addView(layout);
