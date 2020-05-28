@@ -3,9 +3,8 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.text.util.Linkify;
 import android.util.Log;
-import android.view.Gravity;
-import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.navigation.Navigation;
 
 import com.doda.project555.ui.HomeFragment;
 
@@ -137,7 +135,7 @@ public class NewsBlock extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return text.toString().replace("<p>", "").replace("</p>", "\n\n");
+            return "\t\t"+text.toString().replace("<p>", "").replace("</p>", "\n\n\t\t")+"Первоисточник: "+link;
         }
 
         @Override
