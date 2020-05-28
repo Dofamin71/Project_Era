@@ -3,7 +3,6 @@ package com.doda.project555;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;

@@ -26,15 +26,17 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="500dp">
+
             <LinearLayout
+                android:id="@+id/linear_calc"
                 android:orientation="vertical"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
+            </LinearLayout>
 
         </ScrollView>
 

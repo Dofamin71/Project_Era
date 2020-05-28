@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "\"sum\"INTEGER NOT NULL\n" +
                 ");");
         //db.execSQL("INSERT INTO \"Test DB\" VALUES" +
-        //       "(1,1,1,\"Сартасова Надежда Евгеньевна\",\"Копия\",\"Целевое [Б]\",78,96,58,0,0,232)");
+        //      "(1,1,1,\"Сартасова Надежда Евгеньевна\",\"Копия\",\"Целевое [Б]\",78,96,58,0,0,232)");
     }
 
     public SQLiteDatabase open(Context context)throws SQLException {
